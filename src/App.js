@@ -9,6 +9,7 @@ export default function app() {
     explanation: `Birinin framework diyebilme cüretini gösterdiğini duyarsanız, onu mümkün olduğunca bilgili bir şekilde düzeltmeniz, tercihen yanıtınıza " aslında..." diye başlamanız önemlidir.`,
   })
 
+
   /* Challenge: 
 
     Flashcard'ın ileri geri çevrilmesi gerekiyor. Göreviniz bunu aşağıdaki gibi ayarlamaktır: 
@@ -19,6 +20,10 @@ export default function app() {
            
         3. Aynı kalıp sonraki tıklamalar için de tekrarlanmalıdır, böylece kullanıcı kartı istediği kadar ileri geri çevirmeye devam edebilir. 
 */
+const [isFlipped,setIsFlipped] = useState(false)
+const handleClick = () => {
+  setIsFlipped((prev) => !prev);
+};
 
   return (
     <div>
@@ -29,7 +34,9 @@ export default function app() {
 
       {/*-------Aşağıdaki div'i düzenleyin------------*/}
 
-      <div className='flash-card'>
+      <div className={`flash-card ${isFlipped ? 'flipped' : ''}`} 
+        onClick={handleClick}
+      >
         {/*-------Yukarıdaki div'i düzenleyin------------*/}
 
         <div className='flash-card-inner'>
